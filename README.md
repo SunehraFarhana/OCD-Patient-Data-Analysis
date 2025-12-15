@@ -145,5 +145,3 @@ OCD researchers would be interested to know that according to this dataset, Afri
 ---
 ## Conclusion
 This project illustrates OCD patient data in a way that is easy to interpret and filter through. The clinical and demographic data revealed what obsessive and compulsive behaviors are most popular among patients, and which demographics experienced OCD with lower severity. Medical professionals and researchers may use this data to determine the best way to treat individuals with OCD.
-
----
