@@ -64,6 +64,7 @@ FROM ocd_patient_schema.cleaned_ocd_patient_dataset
 GROUP BY 1
 ORDER BY 2;
 ```
+<img width="162" height="106" alt="ocd_patient_sql_1" src="https://github.com/user-attachments/assets/9f57dc81-33ca-4f6b-b47b-012e3a749322" />
 
 2. The dataset contains each patient's **Y-BOCS (Yale-Brown Obsessive Compulsive Scale) Scores**, which measures the severity of their obsessions and compulsions, so that their symptoms may be classified as subclinical, mild, moderate, severe, or extreme. Sort the obsession scores into categories. What is the number of patients in each category?
 ```sql
@@ -93,6 +94,7 @@ ORDER BY
         ELSE 6
     END;
 ```
+<img width="288" height="120" alt="ocd_patient_sql_2" src="https://github.com/user-attachments/assets/a7ac2632-e203-4476-a255-42c205e990e0" />
 
 3. What is the average obsession score and compulsion score by ethnicity?
 ```sql
@@ -105,6 +107,7 @@ FROM ocd_patient_schema.cleaned_ocd_patient_dataset
 GROUP BY 1
 ORDER BY 2;
 ```
+<img width="475" height="106" alt="ocd_patient_sql_3" src="https://github.com/user-attachments/assets/06100f42-d64e-4c6b-bfef-59371a594104" />
 
 4. What is the most common obsession type by each gender?
 ```sql
@@ -123,6 +126,7 @@ SELECT
 FROM obsession_by_gender
 ORDER BY 1, 3 DESC;
 ```
+<img width="228" height="196" alt="ocd_patient_sql_4" src="https://github.com/user-attachments/assets/fd1ec1cf-5aa8-4ac2-a3df-f35d34f6c627" />
 
 An in-depth [**SQL file**](https://github.com/SunehraFarhana/OCD-Patient-Data-Analysis/blob/29351dc5ead63f46b6a46c8cefd48583cb24d497/ocd_patient_queries.sql) detailing every step of the querying process is available in this repository.
 
