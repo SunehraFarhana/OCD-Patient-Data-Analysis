@@ -134,7 +134,7 @@ An in-depth [**SQL file**](https://github.com/SunehraFarhana/OCD-Patient-Data-An
 ## Visualizations in Tableau Public
 The Tableau Public visualizations can be found [**here**](https://public.tableau.com/views/ocd_patient_visualizations/Dashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link). The data was organized into an interactive dashboard that allows clinicians or mental health researchers to  observe OCD trends among this sample set of patients. Viewers can easily toggle between the age group, gender, and ethnicity filters. They can also filter by OCD diagnosis date, obsession/compulsion category, medication taken, or whether there is a family history of OCD, by clicking its respective section on the dashboard.
 
-<img width="1249" height="649" alt="ocd_patient_dashboard" src="https://github.com/user-attachments/assets/860608e9-5a23-4302-b9ea-dca638387c70" />
+<img width="1249" height="649" alt="ocd_patient_visualizations_dashboard" src="https://github.com/user-attachments/assets/8e17bd6c-03d3-4f20-b99d-6717137712ec" />
 
 For example, a medical professional who wants to observe the effectiveness of benzodiazepine on older patients could simply click "BZD" on the Medications bar graph, and then select "Elderly" underneath the Age Group filter. The entire dashboard would adjust to only show the clinical data of patients within these categories, including the intensity of their obsessive and compulsive behavior.
 
