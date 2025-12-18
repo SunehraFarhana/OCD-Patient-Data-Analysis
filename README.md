@@ -53,7 +53,7 @@ df['anxiety_diagnosis'] = df['anxiety_diagnosis'].str.title().replace({'Y': 'Yes
 df['medications'] = df['medications'].replace({'Benzodiazepine': 'BZD'})
 ```
 
-An in-depth [**Jupyter Notebook**](https://github.com/SunehraFarhana/OCD-Patient-Data-Analysis/blob/29351dc5ead63f46b6a46c8cefd48583cb24d497/ocd_patient_cleaning.ipynb) detailing every step of the data cleaning process is available in this repository.
+An in-depth [**Jupyter Notebook**](https://github.com/SunehraFarhana/OCD-Patient-Data-Analysis/blob/4e8fa1112cfa177646a6fe915c7f3a1919d2acb2/ocd_patient_cleaning.ipynb) detailing every step of the data cleaning process is available in this repository.
 
 ---
 ## Exploratory Data Analysis in MySQL Workbench
