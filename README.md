@@ -23,6 +23,8 @@ The Kaggle dataset can be found [**here**](https://www.kaggle.com/datasets/ohinh
 
 ---
 ## Data Cleaning in Python
+This dataset was fairly clean, so only a few adjustments needed to be made.
+
 1. Standardize the column names by converting all letters to lowercase, removing any leading/trailing whitespace and parentheses, and replacing dashes/spaces with underscores.
 ```python
 # Standardize column names
