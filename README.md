@@ -1,5 +1,7 @@
 # OCD Patient Data Analysis
-Documentation of a comprehensive portfolio project that uses Python, SQL, and Tableau to interpret and visualize healthcare data.
+Obsessive-Compulsive Disorder (OCD) is a mental health condition that causes individuals to perform in response to their intrusive thoughts (obsessions) and repetitive behavior (compulsions), even while understanding that their fears are irrational. OCD affects people of all ages, genders, and ethnicities, and their symptoms manifest in different ways, at different severities. Therefore, analyzing clinical and demographic data is key to understanding how OCD affects different groups of people. This information would aid resource allocation within healthcare systems, improve treatment for underserved communities, and advance research into this disorder by highlighting areas for investigation.
+
+**BUSINESS PROBLEM:** How can clinical and demographic OCD patient data be used to uncover insights about OCD symptom manifestation and severity?
 
 ---
 ## Table of Contents
@@ -17,15 +19,16 @@ This project aims to analyze a healthcare dataset that contains comprehensive da
 
 ---
 ## Dataset Summary
-The Kaggle dataset can be found [**here**](https://www.kaggle.com/datasets/ohinhaque/ocd-patient-dataset-demographics-and-clinical-data/). This csv file has 1500 rows and 17 columns.
-- **Demographic Data:** Patient ID, Age, Gender, Ethnicity, Marital Status, Education Level
-- **Clinical Data:** OCD Diagnosis Date, Duration of Symptoms (months), Previous Diagnoses, Family History of OCD, Obsession Type, Compulsion Type, Y-BOCS Score (Obsessions), Y-BOCS Score (Compulsions), Depression Diagnosis, Anxiety Diagnosis, Medications
+The Kaggle dataset can be found [**here**](https://www.kaggle.com/datasets/ohinhaque/ocd-patient-dataset-demographics-and-clinical-data/). Each row represents a patient diagnosed with OCD, and relays their patient profile.
+* **Size:** 1,500 rows, 17 columns
+* **Demographic Data:** Patient ID, Age, Gender, Ethnicity, Marital Status, Education Level
+* **Clinical Data:** OCD Diagnosis Date, Duration of Symptoms (months), Previous Diagnoses, Family History of OCD, Obsession Type, Compulsion Type, Y-BOCS Score (Obsessions), Y-BOCS Score (Compulsions), Depression Diagnosis, Anxiety Diagnosis, Medications
 
 ---
 ## Data Cleaning in Python
 This dataset was fairly clean, so only a few adjustments needed to be made.
 
-1. Standardize the column names by converting all letters to lowercase, removing any leading/trailing whitespace and parentheses, and replacing dashes/spaces with underscores.
+### 1. Standardize the column names by converting all letters to lowercase, removing any leading/trailing whitespace and parentheses, and replacing dashes/spaces with underscores.
 ```python
 # Standardize column names
 df.columns = (df.columns
@@ -40,7 +43,7 @@ df.columns = (df.columns
 df.columns
 ```
 
-2. Standardize the rows by making sure all words are in title case, any inputs of F/M are changed to Female/Male, any inputs of Y/N are changed to Yes/No, and the abbreviated form of medications are used.
+### 2. Standardize the rows by making sure all words are in title case, any inputs of F/M are changed to Female/Male, any inputs of Y/N are changed to Yes/No, and the abbreviated form of medications are used.
 ```python
 # Maintain consistency in gender column
 df['gender'] = df['gender'].str.title().replace({'M': 'Male', 'F': 'Female'})
@@ -57,7 +60,9 @@ An in-depth [**Jupyter Notebook**](https://github.com/SunehraFarhana/OCD-Patient
 
 ---
 ## Exploratory Data Analysis in MySQL Workbench
-1. What is the most common medication taken by patients?
+These SQL queries were used to reveal data trends and give guidance towards assembling visualizations.
+
+### 1. What is the most common medication taken by patients?
 ```sql
 SELECT
     medications,
@@ -68,7 +73,7 @@ ORDER BY 2;
 ```
 <img width="162" height="106" alt="ocd_patient_sql_1" src="https://github.com/user-attachments/assets/9f57dc81-33ca-4f6b-b47b-012e3a749322" />
 
-2. The dataset contains each patient's **Y-BOCS (Yale-Brown Obsessive Compulsive Scale) Scores**, which measures the severity of their obsessions and compulsions, so that their symptoms may be classified as subclinical, mild, moderate, severe, or extreme. Sort the obsession scores into categories. What is the number of patients in each category?
+### 2. The dataset contains each patient's Y-BOCS (Yale-Brown Obsessive Compulsive Scale) Scores, which measures the severity of their obsessions and compulsions, so that their symptoms may be classified as subclinical, mild, moderate, severe, or extreme. Sort the obsession scores into categories. What is the number of patients in each category?
 ```sql
 SELECT
     y_bocs_score_obsessions_category,
@@ -98,7 +103,7 @@ ORDER BY
 ```
 <img width="288" height="120" alt="ocd_patient_sql_2" src="https://github.com/user-attachments/assets/a7ac2632-e203-4476-a255-42c205e990e0" />
 
-3. What is the average obsession score and compulsion score by ethnicity?
+### 3. What is the average Y-BOCS obsession score and compulsion score by ethnicity?
 ```sql
 SELECT
   ethnicity,
@@ -111,7 +116,7 @@ ORDER BY 2;
 ```
 <img width="475" height="106" alt="ocd_patient_sql_3" src="https://github.com/user-attachments/assets/06100f42-d64e-4c6b-bfef-59371a594104" />
 
-4. What is the most common obsession type by each gender?
+### 4. What is the most common obsession type by each gender?
 ```sql
 WITH obsession_by_gender AS (
     SELECT
@@ -142,11 +147,16 @@ For example, a medical professional who wants to observe the effectiveness of be
 
 ---
 ## Project Insight and Recommendations
-The most common obsession type by gender is harm-related. Also, the heat map comparing obsession types to compulsion types shows a strong correlation between harm-related behavior, and counting and praying. Since this is a prevalent problem, clinics must prioritize finding a safe way for patients to treat these impulses.
-
-In addition, a majority of patients fell into the "Extreme" categories of obsession and compulsion. Also, benzodiazepine was the most common medication. Therefore, medical professionals must allocate enough resources towards treating extreme cases of OCD.
-
-OCD researchers would be interested to know that according to this dataset, African patients had the lowest obsession and compulsion scores among ethnicities, men had lower obsession scores than women, and young adults had lower compulsion scores compared to older patients. It should be investigated if any environmental factors within these demographics resulted in less severe cases of OCD.
+* 🩹 The most common obsession type by gender is harm-related. Also, the heat map comparing obsession types to compulsion types shows a strong correlation between harm-related obsessions, and counting and praying compulsions.
+    * **↳ Since this is a prevalent problem, clinics must prioritize finding a safe way for patients to treat these impulses.**
+* 💊 Benzodiazepine (BZD) is the most common medication overall. BZD is most popular among middle-aged, male, and Asian patients. BZD is least popular among young adult, female, and African patients.
+    * **↳ Medical researchers should study the effectiveness of BZD medication on OCD symptoms, to see if more patients would benefit from this prescription.**
+* ‼️ A majority of patients fall into the "Extreme" categories of obsession and compulsion. Also, in most demographics, the average Y-BOCS obsession score is only slightly higher than the compulsion score.
+    * **↳ This shows that one category is not a larger problem among patients than the other. Therefore, medical professionals must allocate enough resources towards treating extreme cases of both obsessive and compulsive symptoms.**
+* 📉 African patients have the lowest obsession and compulsion scores among ethnicities. Men have lower obsession scores than women. Young adults have lower compulsion scores compared to older patients.
+    * **↳ OCD researchers should investigate further, to find out if any environmental factors within these demographics resulted in less severe cases of OCD.**
+* 🧽 Female patients experience contamination obsessions and washing compulsions more often than male patients. Also, older patients experience religious obsessions and praying compulsions more often than younger patients.
+    * **↳ OCD researchers should investigate further, to find out if any environmental factors within these demographics is connected to the development of these obsessive-compulsive behaviors. Medical clinics should then use that research to understand why these patients behave this way, and strategize treatment plans.**
 
 ---
 ## Conclusion
